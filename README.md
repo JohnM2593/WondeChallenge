@@ -10,4 +10,5 @@ Serve the application: (If not using valet)
 php artisan serve
 
 Hit the local endpoint.
+
 app\Http\Controllers\ScheduleController.php

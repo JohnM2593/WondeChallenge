@@ -16,8 +16,4 @@ class Lesson extends Model
         "employee",
         "start_at",
     ];
-
-    protected $casts = [
-        'start_at' => 'date'
-    ];
 }

@@ -16,7 +16,7 @@ class scheduleController extends BaseController
 {
     public function index(Request $request) {
 
-        $testEmployee = Employee::first();
+        $testEmployee = Employee::where('api_id', 'A1851705507')->first();
 
         $employeeLessons = Lesson::where('employee', $testEmployee->api_id)->get();
         $lessonClassAndStudents = collect([]);
@@ -30,7 +30,8 @@ class scheduleController extends BaseController
             $lessonClassAndStudents->push(
                 [
                     'day' => Carbon::createFromDate($lesson->start_at)->englishDayOfWeek,
-                    'Subject' => $class->subject,
+                    'time' => $lesson->start_at,
+                    'subject' => $class->subject,
                     'lesson' => $lesson,
                     'class' => $class,
                     'students' => $students
@@ -38,8 +39,6 @@ class scheduleController extends BaseController
             );
         });
     
-        dd($lessonClassAndStudents);
-    
-        return view('schedule');
+        return view('schedule', ['employee' => $testEmployee, 'data' => $lessonClassAndStudents]);
     }
 }
