@@ -21,4 +21,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/schedule', [scheduleController::class, 'index']);
+Route::get('/', [scheduleController::class, 'index']);
